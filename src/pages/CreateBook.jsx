@@ -5,6 +5,7 @@ import Spinner from '../components/Spinner'
 import { Link, useNavigate } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 
+
 const CreateBook = () => {
   const [title, setTitle] = useState('')
   const [author, setAuthor] = useState('')
@@ -30,7 +31,7 @@ const CreateBook = () => {
     }
     setLoading(true)
     axios
-      .post('http://localhost:5000/api/addBook', bookData)
+      .post(`${import.meta.env.VITE_BACKEND_LINK}api/addBook`, bookData)
       .then(() => {
         setLoading(false)
         navigate('/')

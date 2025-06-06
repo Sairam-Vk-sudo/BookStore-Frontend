@@ -7,6 +7,7 @@ import {BsInfoCircle} from 'react-icons/bs'
 import {MdOutlineAddBox, MdOutlineDelete} from 'react-icons/md'
 import { toast } from 'react-toastify'
 
+
 const Home = () => {
   const [books, setBooks] = useState([])
   const [loading, setLoading] = useState(false)
@@ -16,7 +17,7 @@ const Home = () => {
   useEffect(() => {
     setLoading(true)
     axios
-      .get('http://localhost:5000/api/seeBooks')
+      .get(`${import.meta.env.VITE_BACKEND_LINK}api/seeBooks`)
       .then((response) => {
         setBooks(response.data)
         setLoading(false)
@@ -30,7 +31,7 @@ const Home = () => {
   useEffect(() => {
   if (token) {
     axios
-      .get('http://localhost:5000/api/wishlist', {
+      .get(`${import.meta.env.VITE_BACKEND_LINK}api/wishlist`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -54,7 +55,7 @@ const isInWishlist = (bookId) => {
   const toggleWishlist = async (bookId) => {
   try {
     const response = await axios.post(
-      `http://localhost:5000/api/wishlist/${bookId}`,
+      `${import.meta.env.VITE_BACKEND_LINK}api/wishlist/${bookId}`,
       {},
       {
         headers: {

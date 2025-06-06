@@ -3,6 +3,7 @@ import axios from 'axios'
 import { toast } from 'react-toastify'
 import Spinner from '../components/Spinner'
 
+
 const MyWishlist = () => {
     const [wishlist, setWishlist] = useState([])
     const [loading, setLoading] = useState(false)
@@ -14,7 +15,7 @@ const MyWishlist = () => {
         setLoading(true)
         setError(null)
         try {
-            const response = await axios.get('http://localhost:5000/api/wishlist', {
+            const response = await axios.get(`${import.meta.env.VITE_BACKEND_LINK}api/wishlist`, {
                 headers: {
                     'Authorization': `Bearer ${token}`
                 }

@@ -5,6 +5,7 @@ import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 
 
+
 const ShowBook = () => {
   const {id} = useParams()
   const [book, setBook] = useState(null)
@@ -13,7 +14,7 @@ const ShowBook = () => {
   useEffect(() => {
     console.log("Fetching book with ID:", id)
     axios
-    .get(`http://localhost:5000/api/seeBook/${id}`)
+    .get(`${import.meta.env.VITE_BACKEND_LINK}api/seeBook/${id}`)
     .then((response) => {
       setBook(response.data)
       setLoading(false)

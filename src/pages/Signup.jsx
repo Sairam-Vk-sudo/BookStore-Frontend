@@ -3,6 +3,7 @@ import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate, Link } from 'react-router-dom'
 
+
 const Signup = () => {
 
   const [username, setUsername] = useState('')
@@ -23,7 +24,7 @@ const Signup = () => {
       email,
       password
     }
-    const response = await axios.post('http://localhost:5000/api/register', data)
+    const response = await axios.post(`${import.meta.env.VITE_BACKEND_LINK}api/register`, data)
     console.log("User registered successfully:", response.data)
     navigate('/login')
   } catch (err) {

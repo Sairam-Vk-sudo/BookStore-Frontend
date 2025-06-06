@@ -5,6 +5,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
 
+
 const DeleteBook = () => {
   const {id} = useParams()
   const [loading, setLoading] = useState(false)
@@ -13,7 +14,7 @@ const DeleteBook = () => {
   const handleDeleteBook = () => {
     setLoading(true)
     axios
-      .delete(`http://localhost:5000/api/deleteBook/${id}`)
+      .delete(`${import.meta.env.VITE_BACKEND_LINK}/deleteBook/${id}`)
       .then(() => {
         setLoading(false)
         navigate('/')
